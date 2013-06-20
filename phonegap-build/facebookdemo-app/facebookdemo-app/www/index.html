@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>FbDemo</title>
+
+</head>
+<body>
+    <div class="app">
+        <h1>Facebook Demo</h1>
+        <p>Ejemplo de comunicación con el api de facebook.</p>
+
+        <div class="botones">
+            <input  id="txtUserId" placeholder="[UserId]"/>
+            <button id="btnLogin">LOGIN</button>
+            <button id="btnMe">Me Profile</button>
+            <button id="btnLogout">LOGOUT</button>
+        </div>
+
+        <h2>Resultados </h2>
+        <div id="data" class="resultados">
+            Loading...
+        </div>
+    </div>
+
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

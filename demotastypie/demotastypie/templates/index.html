@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"> 
+    <title>Demo v1.0</title>
+    <link rel="stylesheet" href="{{STATIC_URL}}libs/normalize.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}styles.css" />
+    <style>
+        .mensaje
+        {
+            background: #dea;
+            border-radius:5px;
+            margin: 10px 0;
+            padding:10px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="mensaje">[ Server Working ]</p>
+    <p class="mensaje">Consumiendo datos de un webservice utilizando Tastypie, Ajax y Django.</p>
+
+    <button id="bgetall">GET (ALL)</button>
+    <button id="bgetbyid">GET (BY ID)</button>
+    <button id="bpost">POST (NEW OBJECT)</button>
+    <button id="bput">PUT (UPADATE OBJECT)</button>
+    <button id="bdelete">DELETE (DELETE OBJECT)</button>
+    <button id="bclean">CLEAN LIST</button>
+    
+    <hr />
+
+    <div id="peliculas"><ul></ul></div>
+
+
+    <script src="{{STATIC_URL}}libs/jquery-1.8.3.min.js"></script>
+
+    <script>
+
+    $.support.cors = true;
+
+    $("#bclean").on("click", function() {
+        $("#peliculas ul").html("... Todo limpio ...");
+    });
+
+    $("#bgetall").on("click", function() {
+        $.ajax({
+              url: 'http://localhost:8000/api/v1/pelicula/?callback=?',
+              type: 'GET',
+              dataType: 'json',
+              success : function(data) {
+                    var peliculas = data["objects"];
+                    $("#peliculas ul").html("");
+                    $.each(peliculas, function(index, pelicula) {
+                        $("#peliculas ul").append( $("<li>").append(
+                            index + " - " + pelicula.titulo
+                        ));
+                    });
+              }
+        })
+    });
+
+    $("#bgetbyid").on("click", function() {
+        var id = prompt("Enter ID");
+        $.ajax({
+            url: 'http://localhost:8000/api/v1/pelicula/' + id + '/?callback=?',
+            type: 'GET',
+            contentType: 'application/json',
+            xhrFields: {
+                withCredentials: false 
+            },
+            headers: {
+            // Set any custom headers here.
+            // If you set any non-simple headers, your server must include these
+            // headers in the 'Access-Control-Allow-Headers' response header.
+            },
+            dataType: 'json',
+            success : function(data) {
+                var peliculas = data;
+
+                $("#peliculas ul").html("");
+                
+                $.each(peliculas, function(index, pelicula) {
+                    $("#peliculas ul").append( $("<li>").append(
+                        index + " - " + pelicula
+                    ));
+                });
+            }
+        })
+    });
+
+
+    $("#bpost").on("click", function() {
+        var title = prompt("Titulo de la pelicula ");
+        var user = prompt("ID Usuario");
+        var datajson = '{"titulo":"' + title + '", "user": "/api/v1/user/' + user + '/"}';
+
+        $.ajax({
+            url: 'http://localhost:8000/api/v1/pelicula/',
+            type: 'POST',
+            data: datajson,
+            contentType: 'application/json',
+            xhrFields: {
+                withCredentials: false 
+            },
+            headers: {
+            // Set any custom headers here.
+            // If you set any non-simple headers, your server must include these
+            // headers in the 'Access-Control-Allow-Headers' response header.
+            },
+            success : function(data) {
+                alert("todo ok");
+            },
+            error : function(jqXHR, status, error) {
+                alert('Disculpe, existió un problema : ' + error);
+            }
+        });
+    });
+    
+    </script>
+</body>
+</html>

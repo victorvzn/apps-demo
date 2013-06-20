@@ -1,0 +1,9 @@
+http://lit-hollows-9760.herokuapp.com/api/food
+
+http://stackoverflow.com/questions/13069828/cant-post-to-django-tastypie-cross-domain-xhr
+http://stackoverflow.com/questions/7014402/django-tastypie-and-cross-domain-json
+
+
+https://gist.github.com/1369619 (probar)7
+
+tastypie cross domain ( > GOOGLE)

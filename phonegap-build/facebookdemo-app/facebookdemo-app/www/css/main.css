@@ -1,0 +1,59 @@
+body
+{
+	background: #323232;
+	font-size: 16px;
+	text-align: center;
+}
+
+button, input
+{
+	display: inline-block;
+	border: 0;
+	margin-top: 0.25em;
+	padding: 0.4em 0;
+	text-align: center;
+	width: 100%;
+}
+
+h1
+{
+	color: #FDFDFD;
+	font-size: 2.2em;
+	margin: 0.2em;
+}
+
+h2
+{
+	border-bottom: 3px solid #00B8CE;
+	color: #00B8CE;
+	font-size: 1em;
+	margin: 1em 0 0 0;
+	padding-left: 1em;
+	text-align: left;
+}
+
+p
+{
+	color: #00B8CE;
+}
+
+
+.resultados
+{
+	color: white;
+	padding: 1em 0 1em 1em;
+	margin: 0;
+	text-align: left;
+	width: 98%;
+}
+
+.estado
+{
+	font-size: 0.7em;
+	padding-left: 1em;
+	color: white;
+}
+
+
+
+

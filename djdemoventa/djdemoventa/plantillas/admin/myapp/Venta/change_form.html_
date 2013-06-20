@@ -1,0 +1,14 @@
+{% extends "admin/change_form.html" %}
+
+{% block content_title %}{% endblock %}
+
+{% block content %}
+
+<div id="content-main">
+	<form action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}
+
+	</form>
+	<h1>Prueba</h1>
+</div>
+
+{% endblock %}
